@@ -5,7 +5,7 @@ namespace DesafioFrequencia.Domain.ValueObjects
     public struct Regra
     {
         public DayOfWeek InicioDaSemana { get; private set; }
-        public int FrequenciaLimite { get; private set; }
+        public int QuantidadeDiasObrigatorio { get; private set; }
 
         public Regra(DayOfWeek inicioDaSemana, int quantidadeDiasObrigatorio)
         {
@@ -13,7 +13,7 @@ namespace DesafioFrequencia.Domain.ValueObjects
             DomainExceptionValidation.When(quantidadeDiasObrigatorio > 7, "A quantidade de dias obrigatório tem que ser no máximo 7 dias.");
 
             InicioDaSemana = inicioDaSemana;
-            FrequenciaLimite = quantidadeDiasObrigatorio;
+            QuantidadeDiasObrigatorio = quantidadeDiasObrigatorio;
         }
     }
 }

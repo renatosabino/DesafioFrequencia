@@ -3,17 +3,18 @@ using DesafioFrequencia.Domain.ValueObjects;
 
 namespace DesafioFrequencia.Domain.Entities
 {
-    public sealed class Participante : Entity
+    public class Participante : Entity
     {
         public NomeCompleto NomeCompleto { get; private set; }
-        public  Sexo Sexo { get; private set; }
+        public Sexo Sexo { get; private set; }
         public DataDeNascimento DataDeNascimento { get; private set; }
         public Imagem? Imagem { get; private set; }
 
         private readonly IList<Desafio> _desafios;
         public IEnumerable<Desafio> Desafios => _desafios;
 
-        public ICollection<RegistroFrequencia> RegistroFrequencias { get; }
+        private readonly List<RegistroFrequencia>? _registroFrequencias;
+        public virtual IReadOnlyCollection<RegistroFrequencia>? RegistroFrequencias => _registroFrequencias;
 
         private Participante(int id, NomeCompleto nomeCompleto, Sexo sexo, DataDeNascimento dataDeNascimento)
         {
@@ -21,6 +22,8 @@ namespace DesafioFrequencia.Domain.Entities
             NomeCompleto = nomeCompleto;
             Sexo = sexo;
             DataDeNascimento = dataDeNascimento;
+            _desafios = new List<Desafio>();
+            _registroFrequencias = new List<RegistroFrequencia>();
         }
 
         public static Participante Registrar(int id, NomeCompleto nomeCompleto, Sexo sexo, DataDeNascimento dataDeNascimento)
@@ -44,6 +47,11 @@ namespace DesafioFrequencia.Domain.Entities
         internal void AdicionarDesafio(Desafio desafio)
         {
             _desafios.Add(desafio);
+        }
+
+        internal void AdicionaRegistroFrequencia(RegistroFrequencia registroFrequencia)
+        {
+            _registroFrequencias?.Add(registroFrequencia);
         }
     }
 }

@@ -3,15 +3,18 @@ using DesafioFrequencia.Domain.ValueObjects;
 
 namespace DesafioFrequencia.Domain.Entities
 {
-    public sealed class Desafio : Entity
+    public class Desafio : Entity
     {
+        public readonly static int DIAS_NA_SEMANA = 7;
         public string Nome { get; private set; }
         public Periodo Periodo { get; private set; }
         public Regra Regra { get; private set; }
 
-        private readonly IList<Participante> _participantes;
-        public IEnumerable<Participante> Participantes => _participantes;
-        public ICollection<RegistroFrequencia> RegistroFrequencias { get; }
+        private readonly List<Participante> _participantes;
+        public virtual IReadOnlyCollection<Participante> Participantes => _participantes;
+
+        private readonly List<RegistroFrequencia> _registroFrequencias;
+        public virtual IReadOnlyCollection<RegistroFrequencia> RegistroFrequencias => _registroFrequencias;
 
         private Desafio(string nome, Periodo periodo, Regra regra)
         {

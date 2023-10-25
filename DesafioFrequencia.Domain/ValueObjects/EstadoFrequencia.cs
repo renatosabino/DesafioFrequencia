@@ -1,4 +1,6 @@
-﻿namespace DesafioFrequencia.Domain.ValueObjects
+﻿using System.Drawing;
+
+namespace DesafioFrequencia.Domain.ValueObjects
 {
     public struct EstadoFrequencia
     {
@@ -30,6 +32,11 @@
                 default:
                     throw new ArgumentException("Tipo de frequência inválida");
             }
+        }
+
+        public override string ToString()
+        {
+            return Tipo;
         }
     }
 }
