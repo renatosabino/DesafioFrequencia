@@ -1,13 +1,8 @@
 ﻿using DesafioFrequencia.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesafioFrequencia.Domain.ValueObjects
 {
-    public class DataDeNascimento
+    public struct DataDeNascimento
     {
         public DateTime Valor { get; private set; }
 

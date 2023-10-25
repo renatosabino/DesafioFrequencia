@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesafioFrequencia.Domain.ValueObjects
+﻿namespace DesafioFrequencia.Domain.ValueObjects
 {
-    public class Sexo
+    public struct Sexo
     {
         public string Valor { get; private set; }
 

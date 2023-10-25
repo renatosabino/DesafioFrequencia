@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesafioFrequencia.Domain.Exceptions
+﻿namespace DesafioFrequencia.Domain.Exceptions
 {
     public class DomainExceptionValidation : Exception
     {
         private DomainExceptionValidation(string error) : base(error) { }
+
+        private DomainExceptionValidation() : base()
+        {
+        }
+
+        public DomainExceptionValidation(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
 
         public static void When(bool hasError, string error)
         {
