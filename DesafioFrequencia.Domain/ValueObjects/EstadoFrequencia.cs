@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace DesafioFrequencia.Domain.ValueObjects
+﻿namespace DesafioFrequencia.Domain.ValueObjects
 {
     public struct EstadoFrequencia
     {
@@ -15,7 +13,6 @@ namespace DesafioFrequencia.Domain.ValueObjects
         public static EstadoFrequencia Falta => new EstadoFrequencia("Falta");
         public static EstadoFrequencia DayOff => new EstadoFrequencia("DayOff");
         public static EstadoFrequencia FaltaJustificada => new EstadoFrequencia("FaltaJustificada");
-
 
         public static EstadoFrequencia FromString(string tipo)
         {
