@@ -24,6 +24,8 @@ namespace DesafioFrequencia.Domain.Models.Desafios
             Nome = nome;
             Periodo = periodo;
             Regra = regra;
+            _participantes = new List<Participante>();
+            _registroFrequencias = new List<RegistroFrequencia>();
         }
 
         public static Desafio Criar(string nome, Periodo periodo, Regra regra)

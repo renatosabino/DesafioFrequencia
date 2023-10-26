@@ -49,7 +49,7 @@ namespace DesafioFrequencia.Domain.Models.Participantes
 
         internal void ParticiparDesafio(Desafio desafio)
         {
-            _desafios.Add(desafio);
+            _desafios?.Add(desafio);
         }
 
         internal void RegistrarFrequencia(RegistroFrequencia registroFrequencia)
