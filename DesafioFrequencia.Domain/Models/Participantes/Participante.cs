@@ -1,17 +1,20 @@
-﻿using DesafioFrequencia.Domain.Exceptions;
-using DesafioFrequencia.Domain.ValueObjects;
+﻿using DesafioFrequencia.Domain.Models.Participantes.ValueObjects;
+using DesafioFrequencia.Domain.Exceptions;
+using DesafioFrequencia.Domain.Models.RegistroFrequencias;
+using DesafioFrequencia.Domain.Models.Desafios;
+using DesafioFrequencia.BuildingBlocks.Domain;
 
-namespace DesafioFrequencia.Domain.Entities
+namespace DesafioFrequencia.Domain.Models.Participantes
 {
-    public class Participante : Entity
+    public class Participante : Entity, IAggregateRoot
     {
         public NomeCompleto NomeCompleto { get; private set; }
         public Sexo Sexo { get; private set; }
         public DataDeNascimento DataDeNascimento { get; private set; }
         public Imagem? Imagem { get; private set; }
 
-        private readonly IList<Desafio> _desafios;
-        public IEnumerable<Desafio> Desafios => _desafios;
+        private readonly List<Desafio>? _desafios;
+        public IReadOnlyCollection<Desafio>? Desafios => _desafios;
 
         private readonly List<RegistroFrequencia>? _registroFrequencias;
         public virtual IReadOnlyCollection<RegistroFrequencia>? RegistroFrequencias => _registroFrequencias;
@@ -44,12 +47,12 @@ namespace DesafioFrequencia.Domain.Entities
             Imagem = imagem;
         }
 
-        internal void AdicionarDesafio(Desafio desafio)
+        internal void ParticiparDesafio(Desafio desafio)
         {
             _desafios.Add(desafio);
         }
 
-        internal void AdicionaRegistroFrequencia(RegistroFrequencia registroFrequencia)
+        internal void RegistrarFrequencia(RegistroFrequencia registroFrequencia)
         {
             _registroFrequencias?.Add(registroFrequencia);
         }

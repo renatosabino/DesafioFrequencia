@@ -1,4 +1,4 @@
-﻿namespace DesafioFrequencia.Domain.ValueObjects
+﻿namespace DesafioFrequencia.Domain.Models.Participantes.ValueObjects
 {
     public struct Sexo
     {
@@ -14,7 +14,7 @@
 
         public static Sexo FromString(string valor)
         {
-            switch(valor)
+            switch (valor)
             {
                 case "Masculino":
                     return Masculino;

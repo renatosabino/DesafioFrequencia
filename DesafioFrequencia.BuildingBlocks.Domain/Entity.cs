@@ -1,4 +1,4 @@
-﻿namespace DesafioFrequencia.Domain.Entities
+﻿namespace DesafioFrequencia.Domain.Models
 {
     public abstract class Entity
     {

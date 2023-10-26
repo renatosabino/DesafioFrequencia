@@ -1,10 +1,13 @@
-﻿using DesafioFrequencia.Domain.Exceptions;
+﻿using DesafioFrequencia.BuildingBlocks.Domain;
+using DesafioFrequencia.Domain.Exceptions;
+using DesafioFrequencia.Domain.Models.Desafios;
+using DesafioFrequencia.Domain.Models.Participantes;
+using DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects;
 using DesafioFrequencia.Domain.Utils;
-using DesafioFrequencia.Domain.ValueObjects;
 
-namespace DesafioFrequencia.Domain.Entities
+namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
 {
-    public sealed class RegistroFrequencia : Entity
+    public sealed class RegistroFrequencia : Entity, IAggregateRoot
     {
         public DataFrequencia DataFrequencia { get; }
         public Desafio Desafio { get; }
@@ -24,13 +27,13 @@ namespace DesafioFrequencia.Domain.Entities
         public static void IncluirComparecimento(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem)
         {
             var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.Comparecimento);
-            participante.AdicionaRegistroFrequencia(registroFrequencia);
+            participante.RegistrarFrequencia(registroFrequencia);
         }
 
         public static void IncluirFalta(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem)
         {
             var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.Falta);
-            participante.AdicionaRegistroFrequencia(registroFrequencia);
+            participante.RegistrarFrequencia(registroFrequencia);
         }
         public static void IncluirDayOff(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem)
         {
@@ -38,12 +41,12 @@ namespace DesafioFrequencia.Domain.Entities
                 "Já foram incluidos a quantidade máxima de dayoffs na semana.");
 
             var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.DayOff);
-            participante.AdicionaRegistroFrequencia(registroFrequencia);
+            participante.RegistrarFrequencia(registroFrequencia);
         }
         public static void IncluirFaltaJustificada(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem)
         {
             var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.FaltaJustificada);
-            participante.AdicionaRegistroFrequencia(registroFrequencia);
+            participante.RegistrarFrequencia(registroFrequencia);
         }
         private static bool EhPermitidoODayOff(DataFrequencia dataFrequencia, Desafio desafio, Participante participante)
         {
@@ -51,12 +54,12 @@ namespace DesafioFrequencia.Domain.Entities
             var diaFimSemana = dataFrequencia.Data.FimDaSemana(desafio.Regra.InicioDaSemana);
 
             var quantidadeDayOffNaSemana = participante.RegistroFrequencias?
-                .Count(rf => (rf.DataFrequencia.Data >= diaInicioSemana && rf.DataFrequencia.Data <= diaFimSemana) &&
+                .Count(rf => rf.DataFrequencia.Data >= diaInicioSemana && rf.DataFrequencia.Data <= diaFimSemana &&
                              rf.EstadoFrequencia.Tipo.Equals(EstadoFrequencia.DayOff.ToString()));
 
-            var quantidadeDayOffPermitida = desafio.Regra.QuantidadeDiasObrigatorio - Desafio.DIAS_NA_SEMANA;
+            var quantidadeDayOffPermitida = Desafio.DIAS_NA_SEMANA - desafio.Regra.QuantidadeDiasObrigatorio;
 
-            return quantidadeDayOffNaSemana <= quantidadeDayOffPermitida;
+            return (quantidadeDayOffNaSemana + 1) <= quantidadeDayOffPermitida;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using DesafioFrequencia.Domain.Exceptions;
 
-namespace DesafioFrequencia.Domain.ValueObjects
+namespace DesafioFrequencia.Domain.Models.Desafios.ValueObjects
 {
     public struct Periodo
     {

@@ -1,20 +1,23 @@
-﻿using DesafioFrequencia.Domain.Exceptions;
-using DesafioFrequencia.Domain.ValueObjects;
+﻿using DesafioFrequencia.BuildingBlocks.Domain;
+using DesafioFrequencia.Domain.Exceptions;
+using DesafioFrequencia.Domain.Models.Desafios.ValueObjects;
+using DesafioFrequencia.Domain.Models.Participantes;
+using DesafioFrequencia.Domain.Models.RegistroFrequencias;
 
-namespace DesafioFrequencia.Domain.Entities
+namespace DesafioFrequencia.Domain.Models.Desafios
 {
-    public class Desafio : Entity
+    public class Desafio : Entity, IAggregateRoot
     {
         public readonly static int DIAS_NA_SEMANA = 7;
         public string Nome { get; private set; }
         public Periodo Periodo { get; private set; }
         public Regra Regra { get; private set; }
 
-        private readonly List<Participante> _participantes;
-        public virtual IReadOnlyCollection<Participante> Participantes => _participantes;
+        private readonly List<Participante>? _participantes;
+        public virtual IReadOnlyCollection<Participante>? Participantes => _participantes;
 
-        private readonly List<RegistroFrequencia> _registroFrequencias;
-        public virtual IReadOnlyCollection<RegistroFrequencia> RegistroFrequencias => _registroFrequencias;
+        private readonly List<RegistroFrequencia>? _registroFrequencias;
+        public virtual IReadOnlyCollection<RegistroFrequencia>? RegistroFrequencias => _registroFrequencias;
 
         private Desafio(string nome, Periodo periodo, Regra regra)
         {
@@ -29,10 +32,10 @@ namespace DesafioFrequencia.Domain.Entities
             return new Desafio(nome, periodo, regra);
         }
 
-        public void AdicionarParticipante(Participante participante)
+        public void IncluirParticipante(Participante participante)
         {
-            _participantes.Add(participante);
-            participante.AdicionarDesafio(this);
+            _participantes?.Add(participante);
+            participante.ParticiparDesafio(this);
         }
 
         public void AlterarNome(string nome)

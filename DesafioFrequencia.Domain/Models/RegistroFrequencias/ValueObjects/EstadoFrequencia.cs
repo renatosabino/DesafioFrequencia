@@ -1,4 +1,4 @@
-﻿namespace DesafioFrequencia.Domain.ValueObjects
+﻿namespace DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects
 {
     public struct EstadoFrequencia
     {

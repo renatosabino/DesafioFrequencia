@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioFrequencia.Domain", "DesafioFrequencia.Domain\DesafioFrequencia.Domain.csproj", "{31021399-85CB-411E-B1F4-7D84CC9B25EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioFrequencia.Domain", "DesafioFrequencia.Domain\DesafioFrequencia.Domain.csproj", "{31021399-85CB-411E-B1F4-7D84CC9B25EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioFrequencia.BuildingBlocks.Domain", "DesafioFrequencia.BuildingBlocks.Domain\DesafioFrequencia.BuildingBlocks.Domain.csproj", "{B40F0932-E603-45DB-A05B-0BE5CE665704}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{31021399-85CB-411E-B1F4-7D84CC9B25EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31021399-85CB-411E-B1F4-7D84CC9B25EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31021399-85CB-411E-B1F4-7D84CC9B25EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B40F0932-E603-45DB-A05B-0BE5CE665704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B40F0932-E603-45DB-A05B-0BE5CE665704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B40F0932-E603-45DB-A05B-0BE5CE665704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B40F0932-E603-45DB-A05B-0BE5CE665704}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
