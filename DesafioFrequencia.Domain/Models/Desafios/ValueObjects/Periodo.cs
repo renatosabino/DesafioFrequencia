@@ -9,7 +9,7 @@ namespace DesafioFrequencia.Domain.Models.Desafios.ValueObjects
 
         public Periodo(DateTime inicio, DateTime fim)
         {
-            DomainExceptionValidation.When(fim > inicio, "O fim não pode ser menor que o inicio.");
+            DomainExceptionValidation.When(inicio > fim, "O fim não pode ser menor que o inicio.");
             Inicio = inicio;
             Fim = fim;
         }

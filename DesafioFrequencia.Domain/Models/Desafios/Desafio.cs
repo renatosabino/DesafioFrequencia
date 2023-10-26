@@ -13,8 +13,8 @@ namespace DesafioFrequencia.Domain.Models.Desafios
         public Periodo Periodo { get; private set; }
         public Regra Regra { get; private set; }
 
-        private readonly List<Participante>? _participantes;
-        public virtual IReadOnlyCollection<Participante>? Participantes => _participantes;
+        private readonly List<Participante> _participantes;
+        public virtual IReadOnlyCollection<Participante> Participantes => _participantes;
 
         private readonly List<RegistroFrequencia>? _registroFrequencias;
         public virtual IReadOnlyCollection<RegistroFrequencia>? RegistroFrequencias => _registroFrequencias;
@@ -25,7 +25,6 @@ namespace DesafioFrequencia.Domain.Models.Desafios
             Periodo = periodo;
             Regra = regra;
             _participantes = new List<Participante>();
-            _registroFrequencias = new List<RegistroFrequencia>();
         }
 
         public static Desafio Criar(string nome, Periodo periodo, Regra regra)
@@ -36,12 +35,15 @@ namespace DesafioFrequencia.Domain.Models.Desafios
 
         public void IncluirParticipante(Participante participante)
         {
+            DomainExceptionValidation.When(Participantes.Any(a => a.Id == participante.Id), "O participante já está no desafio.");
+
             _participantes?.Add(participante);
             participante.ParticiparDesafio(this);
         }
 
         public void AlterarNome(string nome)
         {
+            DomainExceptionValidation.When(nome.Length > 50, "O nome não pode ter mais que 50 caracteres.");
             Nome = nome;
         }
 
