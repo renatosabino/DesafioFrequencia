@@ -93,11 +93,69 @@ namespace DesafioFrequencia.Domain.Tests
         [Fact]
         public void AlterarImagem_ImagemInvalida_RetornoObjetoInvalido()
         {
-            Action action = () => new Imagem(new string('a', 200));
+
+            Action action = () =>
+            {
+                var participante = Participante.Registrar(
+                        1,
+                        new NomeCompleto("Renato", "Sabno"),
+                        Sexo.Masculino,
+                        new DataDeNascimento(new DateTime(1996, 12, 03))
+                    );
+
+                participante.AlterarImagem(new Imagem(new string('a', 200)));
+            };
 
             action.Should()
                 .Throw<DomainExceptionValidation>()
                 .WithMessage("O nome da imagem ultrapassou os caracteres suportados.");
+        }
+
+        [Fact]
+        public void EditarParticipante_DadosValidos_RetornoObjetoValido()
+        {
+            Action action = () =>
+            {
+                var participante = Participante.Registrar(
+                    1,
+                    new NomeCompleto("Renato", "Sabno"),
+                    Sexo.Masculino,
+                    new DataDeNascimento(new DateTime(1996, 12, 03))
+                );
+
+                participante.Editar(
+                    new NomeCompleto("Renato", "Sabino"),
+                    Sexo.Masculino,
+                    new DataDeNascimento(new DateTime(1996, 12, 03))
+                );
+            };
+
+            action.Should()
+                .NotThrow<DomainExceptionValidation>();
+        }
+
+        [Fact]
+        public void EditarParticipante_IdInvalido_RetornoObjetoInvalido()
+        {
+            Action action = () =>
+            {
+                var participante = Participante.Registrar(
+                    0,
+                    new NomeCompleto("Renato", "Sabno"),
+                    Sexo.Masculino,
+                    new DataDeNascimento(new DateTime(1996, 12, 03))
+                );
+
+                participante.Editar(
+                    new NomeCompleto("Renato", "Sabino"),
+                    Sexo.Masculino,
+                    new DataDeNascimento(new DateTime(1996, 12, 03))
+                );
+            };
+
+            action.Should()
+                .Throw<DomainExceptionValidation>()
+                .WithMessage("Id com valor inválido.");
         }
     }
 }

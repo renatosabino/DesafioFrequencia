@@ -37,6 +37,7 @@ namespace DesafioFrequencia.Domain.Models.Participantes
 
         public void Editar(NomeCompleto nomeCompleto, Sexo sexo, DataDeNascimento dataDeNascimento)
         {
+            DomainExceptionValidation.When(Id <= 0, "Id com valor inválido.");
             NomeCompleto = nomeCompleto;
             Sexo = sexo;
             DataDeNascimento = dataDeNascimento;
