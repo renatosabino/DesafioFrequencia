@@ -26,9 +26,11 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirComparecimento(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
+                    participante);
+
+                registroFrequencia.IncluirComparecimento(
                     new Imagem("picture.jpg"));
             };
 
@@ -53,14 +55,18 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirComparecimento(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
+                    participante);
+
+                registroFrequencia.IncluirComparecimento(
                     new Imagem("picture.jpg"));
 
-                RegistroFrequencia.IncluirComparecimento(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia2 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
+                    participante);
+
+                registroFrequencia2.IncluirComparecimento(
                     new Imagem("picture2.jpg"));
             };
 
@@ -86,9 +92,11 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirComparecimento(new DataFrequencia(new DateTime(2099, 12, 31)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2099, 12, 31)),
                     desafio,
-                    participante,
+                    participante);
+
+                registroFrequencia.IncluirComparecimento(
                     new Imagem("picture.jpg"));
             };
 
@@ -114,9 +122,11 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirComparecimento(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
+                    participante);
+
+                registroFrequencia.IncluirComparecimento(
                     new Imagem(new string('a', 101)));
             };
 
@@ -142,10 +152,11 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirFalta(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
+
+                registroFrequencia.Falta();
             };
 
             action
@@ -169,15 +180,17 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirFalta(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
 
-                RegistroFrequencia.IncluirFalta(new DataFrequencia(new DateTime(2023, 10, 26)),
+                registroFrequencia.Falta();
+
+                var registroFrequencia2 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
-                    new Imagem("picture2.jpg"));
+                    participante);
+
+                registroFrequencia2.Falta();
             };
 
             action
@@ -202,44 +215,17 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirFalta(new DataFrequencia(new DateTime(2099, 12, 31)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2099, 12, 31)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
+
+                registroFrequencia.Falta();
             };
 
             action
                 .Should()
                 .Throw<DomainExceptionValidation>()
                 .WithMessage("A frequência não pode ser adicionada para o futuro.");
-        }
-
-        [Fact]
-        public void IncluirFalta_ImagemInvalida_ErroInclusaoNovoRegistroFrequencia()
-        {
-            Action action = () =>
-            {
-                var desafio = Desafio.Criar("Marombers 2023.4",
-                    new Periodo(new DateTime(2023, 06, 01), new DateTime(2023, 06, 30)),
-                    new Regra(DayOfWeek.Monday, 5));
-
-                var participante = Participante.Registrar(
-                    1,
-                    new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
-                    Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
-                );
-
-                RegistroFrequencia.IncluirFalta(new DataFrequencia(new DateTime(2023, 10, 26)),
-                    desafio,
-                    participante,
-                    new Imagem(new string('a', 101)));
-            };
-
-            action
-                .Should()
-                .Throw<DomainExceptionValidation>()
-                .WithMessage("O nome da imagem ultrapassou os caracteres suportados.");
         }
 
         [Fact]
@@ -258,10 +244,11 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirFaltaJustificada(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
+
+                registroFrequencia.FaltaJustificada(new Imagem("picture.jpg"));
             };
 
             action
@@ -285,14 +272,18 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirFaltaJustificada(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
+                    participante);
+
+                registroFrequencia.FaltaJustificada(
                     new Imagem("picture.jpg"));
 
-                RegistroFrequencia.IncluirFaltaJustificada(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia2 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
+                    participante);
+
+                registroFrequencia2.FaltaJustificada(
                     new Imagem("picture2.jpg"));
             };
 
@@ -318,10 +309,11 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirFaltaJustificada(new DataFrequencia(new DateTime(2099, 12, 31)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2099, 12, 31)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
+
+                registroFrequencia.FaltaJustificada(new Imagem("picture.jpg"));
             };
 
             action
@@ -346,10 +338,11 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirFaltaJustificada(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
-                    new Imagem(new string('a', 101)));
+                    participante);
+
+                registroFrequencia.FaltaJustificada(new Imagem(new string('a', 101)));
             };
 
             action
@@ -374,10 +367,11 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
+
+                registroFrequencia.DayOff();
             };
 
             action
@@ -401,20 +395,23 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 19)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 19)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 23)),
+                registroFrequencia.DayOff();
+
+                var registroFrequencia2 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 23)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 24)),
+                registroFrequencia2.DayOff();
+
+                var registroFrequencia3 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 24)),
                    desafio,
-                   participante,
-                   new Imagem("picture.jpg"));
+                   participante);
+
+                registroFrequencia3.DayOff();
             };
 
             action
@@ -438,15 +435,17 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 26)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 26)),
+                registroFrequencia.DayOff();
+
+                var registroFrequencia2 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
-                    participante,
-                    new Imagem("picture2.jpg"));
+                    participante);
+
+                registroFrequencia2.DayOff();
             };
 
             action
@@ -471,20 +470,23 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 23)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 23)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 24)),
-                    desafio,
-                    participante,
-                    new Imagem("picture2.jpg"));
+                registroFrequencia.DayOff();
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 25)),
+                var registroFrequencia2 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 24)),
                     desafio,
-                    participante,
-                    new Imagem("picture3.jpg"));
+                    participante);
+
+                registroFrequencia2.DayOff();
+
+                var registroFrequencia3 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 25)),
+                    desafio,
+                    participante);
+
+                registroFrequencia3.DayOff();
             };
 
             action
@@ -509,44 +511,17 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2099, 12, 31)),
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2099, 12, 31)),
                     desafio,
-                    participante,
-                    new Imagem("picture.jpg"));
+                    participante);
+
+                registroFrequencia.DayOff();
             };
 
             action
                 .Should()
                 .Throw<DomainExceptionValidation>()
                 .WithMessage("A frequência não pode ser adicionada para o futuro.");
-        }
-
-        [Fact]
-        public void IncluirDayOff_ImagemInvalida_ErroInclusaoNovoRegistroFrequencia()
-        {
-            Action action = () =>
-            {
-                var desafio = Desafio.Criar("Marombers 2023.4",
-                    new Periodo(new DateTime(2023, 06, 01), new DateTime(2023, 06, 30)),
-                    new Regra(DayOfWeek.Monday, 5));
-
-                var participante = Participante.Registrar(
-                    1,
-                    new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
-                    Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
-                );
-
-                RegistroFrequencia.IncluirDayOff(new DataFrequencia(new DateTime(2023, 10, 26)),
-                    desafio,
-                    participante,
-                    new Imagem(new string('a', 101)));
-            };
-
-            action
-                .Should()
-                .Throw<DomainExceptionValidation>()
-                .WithMessage("O nome da imagem ultrapassou os caracteres suportados.");
         }
     }
 }

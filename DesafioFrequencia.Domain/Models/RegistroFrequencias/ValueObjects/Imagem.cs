@@ -4,7 +4,7 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects
 {
     public struct Imagem
     {
-        public string Endereco { get; private set; }
+        public string? Endereco { get; private set; }
 
         public Imagem(string endereco)
         {

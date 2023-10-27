@@ -1,4 +1,5 @@
 ﻿using DesafioFrequencia.BuildingBlocks.Domain;
+using DesafioFrequencia.Domain.DomainEvents;
 using DesafioFrequencia.Domain.Exceptions;
 using DesafioFrequencia.Domain.Models.Desafios;
 using DesafioFrequencia.Domain.Models.Participantes;
@@ -12,61 +13,81 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
         public DataFrequencia DataFrequencia { get; }
         public Desafio Desafio { get; }
         public Participante Participante { get; }
-        public EstadoFrequencia EstadoFrequencia { get; }
-        public Imagem Imagem { get; }
+        public EstadoFrequencia EstadoFrequencia { get; private set; }
+        public Imagem Imagem { get; private set; }
 
-        private RegistroFrequencia(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem, EstadoFrequencia estadoFrequencia)
+        public RegistroFrequencia(DataFrequencia dataFrequencia, Desafio desafio, Participante participante)
         {
             DataFrequencia = dataFrequencia;
             Desafio = desafio;
             Participante = participante;
-            Imagem = imagem;
-            EstadoFrequencia = estadoFrequencia;
         }
 
-        public static void IncluirComparecimento(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem) =>
-            RegistrarFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.Comparecimento);
-
-        public static void IncluirFalta(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem) =>
-            RegistrarFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.Falta);
-
-        public static void IncluirDayOff(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem)
+        public void IncluirComparecimento(Imagem imagem)
         {
-            DomainExceptionValidation.When(!EhPermitidoODayOff(dataFrequencia, desafio, participante),
+            RegistrarFrequencia(imagem, EstadoFrequencia.Comparecimento);
+
+            RaiseDomainEvent(new ComparecimentoDomainEvent(Desafio.Id, Participante.Id));
+        }
+
+        public void Falta()
+        {
+            RegistrarFrequencia(EstadoFrequencia.Falta);
+
+            RaiseDomainEvent(new FaltaDomainEvent(Desafio.Id, Participante.Id));
+        }
+
+        public void DayOff()
+        {
+            DomainExceptionValidation.When(!EhPermitidoODayOff(),
                 "Já foram incluidos a quantidade máxima de dayoffs na semana.");
 
-            RegistrarFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.DayOff);
+            RegistrarFrequencia(EstadoFrequencia.DayOff);
+
+            RaiseDomainEvent(new DayOffDomainEvent(Desafio.Id, Participante.Id));
         }
 
-        public static void IncluirFaltaJustificada(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem) =>
-            RegistrarFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.FaltaJustificada);
-
-        private static void RegistrarFrequencia(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem, EstadoFrequencia estadoFrequencia)
+        public void FaltaJustificada(Imagem imagem)
         {
-            DomainExceptionValidation.When(JaRegistrou(dataFrequencia, desafio, participante), "Já foi registrado a frequência nesta data.");
-            var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, estadoFrequencia);
-            participante.RegistrarFrequencia(registroFrequencia);
+            RegistrarFrequencia(imagem, EstadoFrequencia.FaltaJustificada);
+
+            RaiseDomainEvent(new FaltaJustificadaDomainEvent(Desafio.Id, Participante.Id));
         }
 
-        private static bool JaRegistrou(DataFrequencia dataFrequencia, Desafio desafio, Participante participante)
+        private void RegistrarFrequencia(Imagem imagem, EstadoFrequencia estadoFrequencia)
         {
-            var jaRegistrou = participante.RegistroFrequencias?.Any(a => a.Desafio.Id == desafio.Id &&
-                a.DataFrequencia.Data == dataFrequencia.Data);
+            DomainExceptionValidation.When(JaRegistrou(), "Já foi registrado a frequência nesta data.");
+            Imagem = imagem;
+            EstadoFrequencia = estadoFrequencia;
+            Participante.RegistrarFrequencia(this);
+        }
+
+        private void RegistrarFrequencia(EstadoFrequencia estadoFrequencia)
+        {
+            DomainExceptionValidation.When(JaRegistrou(), "Já foi registrado a frequência nesta data.");
+            EstadoFrequencia = estadoFrequencia;
+            Participante.RegistrarFrequencia(this);
+        }
+
+        private bool JaRegistrou()
+        {
+            var jaRegistrou = Participante.RegistroFrequencias?.Any(a => a.Desafio.Id == Desafio.Id &&
+                a.DataFrequencia.Data == DataFrequencia.Data);
 
             return jaRegistrou.Value;
         }
 
-        private static bool EhPermitidoODayOff(DataFrequencia dataFrequencia, Desafio desafio, Participante participante)
+        private bool EhPermitidoODayOff()
         {
-            var diaInicioSemana = dataFrequencia.Data.InicioDaSemana(desafio.Regra.InicioDaSemana);
-            var diaFimSemana = dataFrequencia.Data.FimDaSemana(desafio.Regra.InicioDaSemana);
+            var diaInicioSemana = DataFrequencia.Data.InicioDaSemana(Desafio.Regra.InicioDaSemana);
+            var diaFimSemana = DataFrequencia.Data.FimDaSemana(Desafio.Regra.InicioDaSemana);
 
-            var quantidadeDayOffNaSemana = participante.RegistroFrequencias?
-                .Count(rf => rf.Desafio.Id == desafio.Id &&
+            var quantidadeDayOffNaSemana = Participante.RegistroFrequencias?
+                .Count(rf => rf.Desafio.Id == Desafio.Id &&
                              (rf.DataFrequencia.Data >= diaInicioSemana && rf.DataFrequencia.Data <= diaFimSemana) &&
                              rf.EstadoFrequencia.Tipo.Equals(EstadoFrequencia.DayOff.ToString()));
 
-            var quantidadeDayOffPermitida = Desafio.DIAS_NA_SEMANA - desafio.Regra.QuantidadeDiasObrigatorio;
+            var quantidadeDayOffPermitida = Desafio.DIAS_NA_SEMANA - Desafio.Regra.QuantidadeDiasObrigatorio;
 
             return (quantidadeDayOffNaSemana + 1) <= quantidadeDayOffPermitida;
         }
