@@ -24,37 +24,46 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
             EstadoFrequencia = estadoFrequencia;
         }
 
-        public static void IncluirComparecimento(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem)
-        {
-            var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.Comparecimento);
-            participante.RegistrarFrequencia(registroFrequencia);
-        }
+        public static void IncluirComparecimento(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem) =>
+            RegistrarFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.Comparecimento);
 
-        public static void IncluirFalta(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem)
-        {
-            var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.Falta);
-            participante.RegistrarFrequencia(registroFrequencia);
-        }
+        public static void IncluirFalta(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem) =>
+            RegistrarFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.Falta);
+
         public static void IncluirDayOff(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem)
         {
             DomainExceptionValidation.When(!EhPermitidoODayOff(dataFrequencia, desafio, participante),
                 "Já foram incluidos a quantidade máxima de dayoffs na semana.");
 
-            var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.DayOff);
-            participante.RegistrarFrequencia(registroFrequencia);
+            RegistrarFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.DayOff);
         }
-        public static void IncluirFaltaJustificada(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem)
+
+        public static void IncluirFaltaJustificada(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem) =>
+            RegistrarFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.FaltaJustificada);
+
+        private static void RegistrarFrequencia(DataFrequencia dataFrequencia, Desafio desafio, Participante participante, Imagem imagem, EstadoFrequencia estadoFrequencia)
         {
-            var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, EstadoFrequencia.FaltaJustificada);
+            DomainExceptionValidation.When(JaRegistrou(dataFrequencia, desafio, participante), "Já foi registrado a frequência nesta data.");
+            var registroFrequencia = new RegistroFrequencia(dataFrequencia, desafio, participante, imagem, estadoFrequencia);
             participante.RegistrarFrequencia(registroFrequencia);
         }
+
+        private static bool JaRegistrou(DataFrequencia dataFrequencia, Desafio desafio, Participante participante)
+        {
+            var jaRegistrou = participante.RegistroFrequencias?.Any(a => a.Desafio.Id == desafio.Id &&
+                a.DataFrequencia.Data == dataFrequencia.Data);
+
+            return jaRegistrou.Value;
+        }
+
         private static bool EhPermitidoODayOff(DataFrequencia dataFrequencia, Desafio desafio, Participante participante)
         {
             var diaInicioSemana = dataFrequencia.Data.InicioDaSemana(desafio.Regra.InicioDaSemana);
             var diaFimSemana = dataFrequencia.Data.FimDaSemana(desafio.Regra.InicioDaSemana);
 
             var quantidadeDayOffNaSemana = participante.RegistroFrequencias?
-                .Count(rf => rf.DataFrequencia.Data >= diaInicioSemana && rf.DataFrequencia.Data <= diaFimSemana &&
+                .Count(rf => rf.Desafio.Id == desafio.Id &&
+                             (rf.DataFrequencia.Data >= diaInicioSemana && rf.DataFrequencia.Data <= diaFimSemana) &&
                              rf.EstadoFrequencia.Tipo.Equals(EstadoFrequencia.DayOff.ToString()));
 
             var quantidadeDayOffPermitida = Desafio.DIAS_NA_SEMANA - desafio.Regra.QuantidadeDiasObrigatorio;
