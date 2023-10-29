@@ -16,6 +16,11 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
         public EstadoFrequencia EstadoFrequencia { get; private set; }
         public Imagem Imagem { get; private set; }
 
+        protected RegistroFrequencia()
+        {
+
+        }
+
         public RegistroFrequencia(DataFrequencia dataFrequencia, Desafio desafio, Participante participante)
         {
             DataFrequencia = dataFrequencia;

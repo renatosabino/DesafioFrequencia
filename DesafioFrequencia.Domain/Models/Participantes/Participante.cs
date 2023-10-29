@@ -19,6 +19,11 @@ namespace DesafioFrequencia.Domain.Models.Participantes
         private readonly List<RegistroFrequencia>? _registroFrequencias;
         public virtual IReadOnlyCollection<RegistroFrequencia>? RegistroFrequencias => _registroFrequencias;
 
+        protected Participante()
+        {
+
+        }
+
         private Participante(int id, NomeCompleto nomeCompleto, Sexo sexo, DataDeNascimento dataDeNascimento)
         {
             Id = id;

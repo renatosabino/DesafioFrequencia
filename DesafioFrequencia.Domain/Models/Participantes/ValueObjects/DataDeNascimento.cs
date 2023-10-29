@@ -2,7 +2,7 @@
 
 namespace DesafioFrequencia.Domain.Models.Participantes.ValueObjects
 {
-    public struct DataDeNascimento
+    public class DataDeNascimento
     {
         public DateTime Valor { get; private set; }
 

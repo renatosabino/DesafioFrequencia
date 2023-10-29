@@ -2,7 +2,7 @@
 
 namespace DesafioFrequencia.Domain.Models.Desafios.ValueObjects
 {
-    public struct Periodo
+    public class Periodo
     {
         public DateTime Inicio { get; private set; }
         public DateTime Fim { get; private set; }

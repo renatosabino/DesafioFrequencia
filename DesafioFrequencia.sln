@@ -5,9 +5,15 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioFrequencia.Domain", "DesafioFrequencia.Domain\DesafioFrequencia.Domain.csproj", "{31021399-85CB-411E-B1F4-7D84CC9B25EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioFrequencia.BuildingBlocks.Domain", "DesafioFrequencia.BuildingBlocks.Domain\DesafioFrequencia.BuildingBlocks.Domain.csproj", "{B40F0932-E603-45DB-A05B-0BE5CE665704}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioFrequencia.BuildingBlocks.Domain", "DesafioFrequencia.BuildingBlocks.Domain\DesafioFrequencia.BuildingBlocks.Domain.csproj", "{B40F0932-E603-45DB-A05B-0BE5CE665704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioFrequencia.Domain.Tests", "DesafioFrequencia.Domain.Tests\DesafioFrequencia.Domain.Tests.csproj", "{EE369234-0B5E-445A-A323-CCE4D3642DD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioFrequencia.Domain.Tests", "DesafioFrequencia.Domain.Tests\DesafioFrequencia.Domain.Tests.csproj", "{EE369234-0B5E-445A-A323-CCE4D3642DD8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioFrequencia.Infra.Data", "DesafioFrequencia.Infra.Data\DesafioFrequencia.Infra.Data.csproj", "{2C277C99-3CFF-457A-8E0D-B050A9ADECB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioFrequencia.Infra.IoC", "DesafioFrequencia.Infra.IoC\DesafioFrequencia.Infra.IoC.csproj", "{9C1E3320-C979-45DC-9191-064FB6E9EAF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioFrequencia.Api", "DesafioFrequencia.Api\DesafioFrequencia.Api.csproj", "{E7888CB4-C84C-4CD5-AD48-E42FC5D61BCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{EE369234-0B5E-445A-A323-CCE4D3642DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE369234-0B5E-445A-A323-CCE4D3642DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE369234-0B5E-445A-A323-CCE4D3642DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C277C99-3CFF-457A-8E0D-B050A9ADECB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C277C99-3CFF-457A-8E0D-B050A9ADECB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C277C99-3CFF-457A-8E0D-B050A9ADECB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C277C99-3CFF-457A-8E0D-B050A9ADECB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C1E3320-C979-45DC-9191-064FB6E9EAF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C1E3320-C979-45DC-9191-064FB6E9EAF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C1E3320-C979-45DC-9191-064FB6E9EAF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C1E3320-C979-45DC-9191-064FB6E9EAF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7888CB4-C84C-4CD5-AD48-E42FC5D61BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7888CB4-C84C-4CD5-AD48-E42FC5D61BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7888CB4-C84C-4CD5-AD48-E42FC5D61BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7888CB4-C84C-4CD5-AD48-E42FC5D61BCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

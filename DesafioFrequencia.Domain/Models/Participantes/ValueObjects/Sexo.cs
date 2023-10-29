@@ -1,6 +1,6 @@
 ﻿namespace DesafioFrequencia.Domain.Models.Participantes.ValueObjects
 {
-    public struct Sexo
+    public class Sexo
     {
         public string Valor { get; private set; }
 

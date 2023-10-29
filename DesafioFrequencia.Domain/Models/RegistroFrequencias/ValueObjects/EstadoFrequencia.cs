@@ -1,6 +1,6 @@
 ﻿namespace DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects
 {
-    public struct EstadoFrequencia
+    public class EstadoFrequencia
     {
         public string Tipo { get; private set; }
 

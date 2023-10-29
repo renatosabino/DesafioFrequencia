@@ -2,7 +2,7 @@
 
 namespace DesafioFrequencia.Domain.Models.Desafios.ValueObjects
 {
-    public struct Regra
+    public class Regra
     {
         public DayOfWeek InicioDaSemana { get; private set; }
         public int QuantidadeDiasObrigatorio { get; private set; }

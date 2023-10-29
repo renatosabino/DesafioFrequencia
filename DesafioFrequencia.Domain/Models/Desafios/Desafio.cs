@@ -19,6 +19,11 @@ namespace DesafioFrequencia.Domain.Models.Desafios
         private readonly List<RegistroFrequencia>? _registroFrequencias;
         public virtual IReadOnlyCollection<RegistroFrequencia>? RegistroFrequencias => _registroFrequencias;
 
+        protected Desafio()
+        {
+            
+        }
+
         private Desafio(string nome, Periodo periodo, Regra regra)
         {
             Nome = nome;

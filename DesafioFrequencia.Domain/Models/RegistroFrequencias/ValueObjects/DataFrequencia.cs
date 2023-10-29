@@ -2,7 +2,7 @@
 
 namespace DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects
 {
-    public struct DataFrequencia
+    public class DataFrequencia
     {
         public DateTime Data { get; set; }
 

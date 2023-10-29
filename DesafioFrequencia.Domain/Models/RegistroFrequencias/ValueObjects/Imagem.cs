@@ -2,7 +2,7 @@
 
 namespace DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects
 {
-    public struct Imagem
+    public class Imagem
     {
         public string? Endereco { get; private set; }
 
