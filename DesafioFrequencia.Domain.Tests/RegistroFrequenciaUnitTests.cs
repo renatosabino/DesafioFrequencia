@@ -20,7 +20,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -49,7 +48,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -86,7 +84,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -116,7 +113,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -146,7 +142,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -174,7 +169,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -209,7 +203,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -238,7 +231,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -266,7 +258,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -303,7 +294,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -332,7 +322,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -361,7 +350,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -389,7 +377,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -429,7 +416,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -464,7 +450,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
@@ -505,7 +490,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))

@@ -1,4 +1,7 @@
-﻿using DesafioFrequencia.Infra.Data.Context;
+﻿using DesafioFrequencia.Domain.Interfaces;
+using DesafioFrequencia.Domain.Models.Participantes.Repository;
+using DesafioFrequencia.Infra.Data.Context;
+using DesafioFrequencia.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +15,9 @@ namespace DesafioFrequencia.Infra.IoC
             services.AddDbContext<DesafioFrequenciaContext>(options =>
                 options.UseSqlite($"Data Source={GetDataSource()}",
                     b => b.MigrationsAssembly(typeof(DesafioFrequenciaContext).Assembly.FullName)));
+
+            services.AddScoped<IParticipanteRepository, ParticipanteRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

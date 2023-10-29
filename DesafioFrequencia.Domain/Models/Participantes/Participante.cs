@@ -24,9 +24,8 @@ namespace DesafioFrequencia.Domain.Models.Participantes
 
         }
 
-        private Participante(int id, NomeCompleto nomeCompleto, Sexo sexo, DataDeNascimento dataDeNascimento)
+        private Participante(NomeCompleto nomeCompleto, Sexo sexo, DataDeNascimento dataDeNascimento)
         {
-            Id = id;
             NomeCompleto = nomeCompleto;
             Sexo = sexo;
             DataDeNascimento = dataDeNascimento;
@@ -34,15 +33,14 @@ namespace DesafioFrequencia.Domain.Models.Participantes
             _registroFrequencias = new List<RegistroFrequencia>();
         }
 
-        public static Participante Registrar(int id, NomeCompleto nomeCompleto, Sexo sexo, DataDeNascimento dataDeNascimento)
+        public static Participante Registrar(NomeCompleto nomeCompleto, Sexo sexo, DataDeNascimento dataDeNascimento)
         {
-            DomainExceptionValidation.When(id < 0, "Id com valor inválido.");
-            return new Participante(id, nomeCompleto, sexo, dataDeNascimento);
+            return new Participante(nomeCompleto, sexo, dataDeNascimento);
         }
 
         public void Editar(NomeCompleto nomeCompleto, Sexo sexo, DataDeNascimento dataDeNascimento)
         {
-            DomainExceptionValidation.When(Id <= 0, "Id com valor inválido.");
+            DomainExceptionValidation.When(Id < 0, "Id com valor inválido.");
             NomeCompleto = nomeCompleto;
             Sexo = sexo;
             DataDeNascimento = dataDeNascimento;

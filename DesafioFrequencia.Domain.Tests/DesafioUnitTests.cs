@@ -180,7 +180,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new NomeCompleto("Renato", "Sabino"),
                     Sexo.Masculino,
                     new DataDeNascimento(new DateTime(1996, 12, 03))
@@ -204,7 +203,6 @@ namespace DesafioFrequencia.Domain.Tests
                     new Regra(DayOfWeek.Monday, 5));
 
                 var participante = Participante.Registrar(
-                    1,
                     new NomeCompleto("Renato", "Sabino"),
                     Sexo.Masculino,
                     new DataDeNascimento(new DateTime(1996, 12, 03))

@@ -2,11 +2,11 @@
 {
     public interface IDesafioRepository
     {
-        Task<IEnumerable<Desafio>> GetDesafioAsync();
-        Task<Desafio> GetByIdAsync(int? id);
+        Task<IEnumerable<Desafio>> GetDesafioAsync(CancellationToken cancellationToken);
+        Task<Desafio> GetByIdAsync(int? id, CancellationToken cancellationToken);
 
-        Task<Desafio> CreateAsync(Desafio category);
-        Task<Desafio> UpdateAsync(Desafio category);
-        Task RemoveAsync(Desafio category);
+        Task<Desafio> CreateAsync(Desafio category, CancellationToken cancellationToken);
+        Task<Desafio> UpdateAsync(Desafio category, CancellationToken cancellationToken);
+        Task RemoveAsync(Desafio category, CancellationToken cancellationToken);
     }
 }

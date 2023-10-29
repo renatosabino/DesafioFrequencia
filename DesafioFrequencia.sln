@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioFrequencia.Infra.IoC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioFrequencia.Api", "DesafioFrequencia.Api\DesafioFrequencia.Api.csproj", "{E7888CB4-C84C-4CD5-AD48-E42FC5D61BCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioFrequencia.Application", "DesafioFrequencia.Application\DesafioFrequencia.Application.csproj", "{A76B3ABC-D0D6-4400-A48C-7E968DD5FB3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{E7888CB4-C84C-4CD5-AD48-E42FC5D61BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7888CB4-C84C-4CD5-AD48-E42FC5D61BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7888CB4-C84C-4CD5-AD48-E42FC5D61BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A76B3ABC-D0D6-4400-A48C-7E968DD5FB3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A76B3ABC-D0D6-4400-A48C-7E968DD5FB3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A76B3ABC-D0D6-4400-A48C-7E968DD5FB3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A76B3ABC-D0D6-4400-A48C-7E968DD5FB3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

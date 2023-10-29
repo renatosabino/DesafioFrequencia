@@ -2,11 +2,11 @@
 {
     public interface IParticipanteRepository
     {
-        Task<IEnumerable<Participante>> GetParticipanteAsync();
-        Task<Participante> GetByIdAsync(int? id);
+        Task<IEnumerable<Participante>> GetParticipanteAsync(CancellationToken cancellationToken);
+        Task<Participante> GetByIdAsync(int? id, CancellationToken cancellationToken);
 
-        Task<Participante> CreateAsync(Participante category);
-        Task<Participante> UpdateAsync(Participante category);
-        Task RemoveAsync(Participante category);
+        Task<Participante> CreateAsync(Participante participante, CancellationToken cancellationToken);
+        Participante Update(Participante participante);
+        void Remove(Participante participante);
     }
 }

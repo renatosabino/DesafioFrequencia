@@ -2,7 +2,7 @@
 {
     public interface IRegistroFrequenciaRepository
     {
-        Task<RegistroFrequencia> CreateAsync(RegistroFrequencia registroFrequencia);
-        Task RemoveAsync(RegistroFrequencia registroFrequencia);
+        Task<RegistroFrequencia> CreateAsync(RegistroFrequencia registroFrequencia, CancellationToken cancellationToken);
+        Task RemoveAsync(RegistroFrequencia registroFrequencia, CancellationToken cancellationToken);
     }
 }
