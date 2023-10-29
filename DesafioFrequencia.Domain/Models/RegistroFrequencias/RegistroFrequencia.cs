@@ -28,7 +28,7 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
             Participante = participante;
         }
 
-        public void IncluirComparecimento(Imagem imagem)
+        public void Comparecimento(Imagem imagem)
         {
             RegistrarFrequencia(imagem, EstadoFrequencia.Comparecimento);
 

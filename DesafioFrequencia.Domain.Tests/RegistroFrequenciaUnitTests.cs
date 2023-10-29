@@ -29,7 +29,7 @@ namespace DesafioFrequencia.Domain.Tests
                     desafio,
                     participante);
 
-                registroFrequencia.IncluirComparecimento(
+                registroFrequencia.Comparecimento(
                     new Imagem("picture.jpg"));
             };
 
@@ -57,14 +57,14 @@ namespace DesafioFrequencia.Domain.Tests
                     desafio,
                     participante);
 
-                registroFrequencia.IncluirComparecimento(
+                registroFrequencia.Comparecimento(
                     new Imagem("picture.jpg"));
 
                 var registroFrequencia2 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
                     participante);
 
-                registroFrequencia2.IncluirComparecimento(
+                registroFrequencia2.Comparecimento(
                     new Imagem("picture2.jpg"));
             };
 
@@ -93,7 +93,7 @@ namespace DesafioFrequencia.Domain.Tests
                     desafio,
                     participante);
 
-                registroFrequencia.IncluirComparecimento(
+                registroFrequencia.Comparecimento(
                     new Imagem("picture.jpg"));
             };
 
@@ -122,7 +122,7 @@ namespace DesafioFrequencia.Domain.Tests
                     desafio,
                     participante);
 
-                registroFrequencia.IncluirComparecimento(
+                registroFrequencia.Comparecimento(
                     new Imagem(new string('a', 101)));
             };
 
