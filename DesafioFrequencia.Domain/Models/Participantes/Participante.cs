@@ -48,6 +48,7 @@ namespace DesafioFrequencia.Domain.Models.Participantes
 
         public void AlterarImagem(Imagem imagem)
         {
+            DomainExceptionValidation.When(Id < 0, "Id com valor inválido.");
             Imagem = imagem;
         }
 

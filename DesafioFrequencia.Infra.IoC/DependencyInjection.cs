@@ -19,6 +19,9 @@ namespace DesafioFrequencia.Infra.IoC
             services.AddScoped<IParticipanteRepository, ParticipanteRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
+            var myHandlers = AppDomain.CurrentDomain.Load("DesafioFrequencia.Application");
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(myHandlers));
+
             return services;
         }
 
