@@ -3,6 +3,7 @@ using System;
 using DesafioFrequencia.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesafioFrequencia.Infra.Data.Migrations
 {
     [DbContext(typeof(DesafioFrequenciaContext))]
-    partial class DesafioFrequenciaContextModelSnapshot : ModelSnapshot
+    [Migration("20231030172054_IncludeNullableModalidadeField")]
+    partial class IncludeNullableModalidadeField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");

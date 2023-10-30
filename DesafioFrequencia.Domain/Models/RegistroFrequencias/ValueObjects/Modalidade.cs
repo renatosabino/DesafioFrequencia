@@ -2,9 +2,9 @@
 {
     public sealed class Modalidade
     {
-        public string Tipo { get; private set; }
+        public string? Tipo { get; private set; }
 
-        private Modalidade(string tipo)
+        private Modalidade(string? tipo)
         {
             Tipo = tipo;
         }
