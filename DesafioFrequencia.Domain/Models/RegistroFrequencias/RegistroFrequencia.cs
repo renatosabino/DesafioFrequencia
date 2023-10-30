@@ -14,6 +14,7 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
         public Desafio Desafio { get; }
         public Participante Participante { get; }
         public EstadoFrequencia EstadoFrequencia { get; private set; }
+        public Modalidade Modalidade { get; private set; }
         public Imagem Imagem { get; private set; }
 
         protected RegistroFrequencia()
@@ -28,9 +29,9 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
             Participante = participante;
         }
 
-        public void Comparecimento(Imagem imagem)
+        public void Comparecimento(Imagem imagem, Modalidade modalidade)
         {
-            RegistrarFrequencia(imagem, EstadoFrequencia.Comparecimento);
+            RegistrarFrequencia(imagem, EstadoFrequencia.Comparecimento, modalidade);
 
             RaiseDomainEvent(new ComparecimentoDomainEvent(Desafio.Id, Participante.Id));
         }
@@ -57,6 +58,15 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
             RegistrarFrequencia(imagem, EstadoFrequencia.FaltaJustificada);
 
             RaiseDomainEvent(new FaltaJustificadaDomainEvent(Desafio.Id, Participante.Id));
+        }
+
+        private void RegistrarFrequencia(Imagem imagem, EstadoFrequencia estadoFrequencia, Modalidade modalidade)
+        {
+            DomainExceptionValidation.When(JaRegistrou(), "Já foi registrado a frequência nesta data.");
+            Imagem = imagem;
+            EstadoFrequencia = estadoFrequencia;
+            Modalidade = modalidade;
+            Participante.RegistrarFrequencia(this);
         }
 
         private void RegistrarFrequencia(Imagem imagem, EstadoFrequencia estadoFrequencia)

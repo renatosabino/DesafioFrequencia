@@ -26,6 +26,11 @@ namespace DesafioFrequencia.Infra.Data.Configurations
                 .HasColumnName("Imagem")
                 .HasMaxLength(100);
 
+            builder.OwnsOne(v => v.Modalidade)
+                .Property(x => x.Tipo)
+                .HasColumnName("Modalidade")
+                .HasMaxLength(20);
+
             builder.HasOne(f => f.Desafio)
                 .WithMany(f => f.RegistroFrequencias);
 

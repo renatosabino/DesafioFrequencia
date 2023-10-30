@@ -30,7 +30,7 @@ namespace DesafioFrequencia.Domain.Tests
                     participante);
 
                 registroFrequencia.Comparecimento(
-                    new Imagem("picture.jpg"));
+                    new Imagem("picture.jpg"), Modalidade.Academia);
             };
 
             action
@@ -58,14 +58,14 @@ namespace DesafioFrequencia.Domain.Tests
                     participante);
 
                 registroFrequencia.Comparecimento(
-                    new Imagem("picture.jpg"));
+                    new Imagem("picture.jpg"), Modalidade.Academia);
 
                 var registroFrequencia2 = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
                     participante);
 
                 registroFrequencia2.Comparecimento(
-                    new Imagem("picture2.jpg"));
+                    new Imagem("picture2.jpg"), Modalidade.Caminhada);
             };
 
             action
@@ -94,7 +94,7 @@ namespace DesafioFrequencia.Domain.Tests
                     participante);
 
                 registroFrequencia.Comparecimento(
-                    new Imagem("picture.jpg"));
+                    new Imagem("picture.jpg"), Modalidade.Academia);
             };
 
             action
@@ -123,13 +123,41 @@ namespace DesafioFrequencia.Domain.Tests
                     participante);
 
                 registroFrequencia.Comparecimento(
-                    new Imagem(new string('a', 101)));
+                    new Imagem(new string('a', 101)), Modalidade.Caminhada);
             };
 
             action
                 .Should()
                 .Throw<DomainExceptionValidation>()
                 .WithMessage("O nome da imagem ultrapassou os caracteres suportados.");
+        }
+
+        [Fact]
+        public void IncluirComparecimento_ModalidadeInvalida_RetornoObjetoInvalido()
+        {
+            Action action = () =>
+            {
+                var desafio = Desafio.Criar("Marombers 2023.4",
+                        new Periodo(new DateTime(2023, 06, 01), new DateTime(2023, 06, 30)),
+                        new Regra(DayOfWeek.Monday, 5));
+
+                var participante = Participante.Registrar(
+                    new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
+                    Models.Participantes.ValueObjects.Sexo.Masculino,
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                );
+
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
+                    desafio,
+                    participante);
+
+                registroFrequencia.Comparecimento(
+                    new Imagem("picture.jpg"), Modalidade.FromString("CorridaReversa"));
+            };
+
+            action.Should()
+                .Throw<ArgumentException>()
+                .WithMessage("Modalidade inválida");
         }
 
         [Fact]
