@@ -5,11 +5,11 @@ using MediatR;
 
 namespace DesafioFrequencia.Application.Participantes.Registrar
 {
-    public class RegistrarHandler : IRequestHandler<RegistrarCommand>
+    public class RegistrarCommandHandler : IRequestHandler<RegistrarCommand>
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public RegistrarHandler(IUnitOfWork unitOfWork)
+        public RegistrarCommandHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
