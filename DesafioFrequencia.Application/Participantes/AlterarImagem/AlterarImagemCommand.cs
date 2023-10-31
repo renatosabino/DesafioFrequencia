@@ -2,4 +2,4 @@
 
 namespace DesafioFrequencia.Application.Participantes.AlterarImagem;
 
-public sealed record AlterarImagemCommand(int ParticipanteId, string Imagem) : IRequest;
+public sealed record AlterarImagemCommand(int Id, string Imagem) : IRequest;

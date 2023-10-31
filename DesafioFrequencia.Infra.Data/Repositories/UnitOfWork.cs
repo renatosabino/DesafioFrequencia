@@ -12,18 +12,18 @@ namespace DesafioFrequencia.Infra.Data.Repositories
 
         public IParticipanteRepository ParticipanteRepository { get; }
 
-        //public IDesafioRepository DesafioRepository { get; }
+        public IDesafioRepository DesafioRepository { get; }
 
         //public IRegistroFrequenciaRepository RegistroFrequenciaRepository { get; }
 
         public UnitOfWork(DesafioFrequenciaContext context,
-            IParticipanteRepository participanteRepository/*,
-            IDesafioRepository desafioRepository,
+            IParticipanteRepository participanteRepository,
+            IDesafioRepository desafioRepository/*,
             IRegistroFrequenciaRepository registroFrequenciaRepository*/)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             ParticipanteRepository = participanteRepository ?? throw new ArgumentNullException(nameof(participanteRepository));
-            //DesafioRepository = desafioRepository ?? throw new ArgumentNullException(nameof(desafioRepository));
+            DesafioRepository = desafioRepository ?? throw new ArgumentNullException(nameof(desafioRepository));
             //RegistroFrequenciaRepository = registroFrequenciaRepository ?? throw new ArgumentNullException(nameof(registroFrequenciaRepository));
         }
 

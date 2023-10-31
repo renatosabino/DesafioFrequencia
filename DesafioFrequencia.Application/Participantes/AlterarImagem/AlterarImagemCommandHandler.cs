@@ -1,10 +1,6 @@
 ﻿using DesafioFrequencia.Domain.Interfaces;
+using DesafioFrequencia.Domain.Models.Participantes.ValueObjects;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesafioFrequencia.Application.Participantes.AlterarImagem
 {
@@ -17,9 +13,17 @@ namespace DesafioFrequencia.Application.Participantes.AlterarImagem
             _unitOfWork = unitOfWork;
         }
 
-        public Task Handle(AlterarImagemCommand request, CancellationToken cancellationToken)
+        public async Task Handle(AlterarImagemCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var participante = await _unitOfWork.ParticipanteRepository.GetByIdAsync(request.Id, cancellationToken);
+
+            if (participante is null)
+                throw new ArgumentException("Não foi encontrado nenhum participante com este Id.", nameof(request.Id));
+
+            participante.AlterarImagem(new Imagem(request.Imagem));
+
+            _unitOfWork.ParticipanteRepository.Update(participante);
+            await _unitOfWork.CommitAsync(cancellationToken);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace DesafioFrequencia.Domain.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IParticipanteRepository ParticipanteRepository { get; }
-        //IDesafioRepository DesafioRepository { get; }
+        IDesafioRepository DesafioRepository { get; }
         //IRegistroFrequenciaRepository RegistroFrequenciaRepository { get; }
         Task<int> CommitAsync(CancellationToken cancellationToken);
     }

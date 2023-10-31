@@ -14,6 +14,7 @@
     <ProjectReference Include="..\DesafioFrequencia.Application\DesafioFrequencia.Application.csproj" />
     <ProjectReference Include="..\DesafioFrequencia.Domain\DesafioFrequencia.Domain.csproj" />
     <ProjectReference Include="..\DesafioFrequencia.Infra.Data\DesafioFrequencia.Infra.Data.csproj" />
+    <ProjectReference Include="..\DesafioFrequencia.Infra.Utils\DesafioFrequencia.Infra.Utils.csproj" />
   </ItemGroup>
 
 </Project>
