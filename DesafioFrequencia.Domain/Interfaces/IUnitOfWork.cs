@@ -13,7 +13,7 @@ namespace DesafioFrequencia.Domain.Interfaces
     {
         IParticipanteRepository ParticipanteRepository { get; }
         IDesafioRepository DesafioRepository { get; }
-        //IRegistroFrequenciaRepository RegistroFrequenciaRepository { get; }
+        IRegistroFrequenciaRepository RegistroFrequenciaRepository { get; }
         Task<int> CommitAsync(CancellationToken cancellationToken);
     }
 }

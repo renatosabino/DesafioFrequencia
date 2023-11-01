@@ -1,6 +1,7 @@
 ﻿using DesafioFrequencia.Domain.Interfaces;
 using DesafioFrequencia.Domain.Models.Desafios.Repository;
 using DesafioFrequencia.Domain.Models.Participantes.Repository;
+using DesafioFrequencia.Domain.Models.RegistroFrequencias.Repository;
 using DesafioFrequencia.Infra.Data.Context;
 using DesafioFrequencia.Infra.Data.Repositories;
 using DesafioFrequencia.Infra.Utils;
@@ -18,6 +19,7 @@ namespace DesafioFrequencia.Infra.IoC
 
             services.AddScoped<IParticipanteRepository, ParticipanteRepository>();
             services.AddScoped<IDesafioRepository, DesafioRepository>();
+            services.AddScoped<IRegistroFrequenciaRepository, RegistroFrequenciaRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IImageUploadService, ImageUploadService>();
 

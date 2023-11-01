@@ -14,17 +14,17 @@ namespace DesafioFrequencia.Infra.Data.Repositories
 
         public IDesafioRepository DesafioRepository { get; }
 
-        //public IRegistroFrequenciaRepository RegistroFrequenciaRepository { get; }
+        public IRegistroFrequenciaRepository RegistroFrequenciaRepository { get; }
 
         public UnitOfWork(DesafioFrequenciaContext context,
             IParticipanteRepository participanteRepository,
-            IDesafioRepository desafioRepository/*,
-            IRegistroFrequenciaRepository registroFrequenciaRepository*/)
+            IDesafioRepository desafioRepository,
+            IRegistroFrequenciaRepository registroFrequenciaRepository)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             ParticipanteRepository = participanteRepository ?? throw new ArgumentNullException(nameof(participanteRepository));
             DesafioRepository = desafioRepository ?? throw new ArgumentNullException(nameof(desafioRepository));
-            //RegistroFrequenciaRepository = registroFrequenciaRepository ?? throw new ArgumentNullException(nameof(registroFrequenciaRepository));
+            RegistroFrequenciaRepository = registroFrequenciaRepository ?? throw new ArgumentNullException(nameof(registroFrequenciaRepository));
         }
 
         public async Task<int> CommitAsync(CancellationToken cancellationToken)
