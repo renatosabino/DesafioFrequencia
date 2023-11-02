@@ -106,5 +106,10 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
 
             return (quantidadeDayOffNaSemana + 1) <= quantidadeDayOffPermitida;
         }
+
+        public void Comparecimento(Imagem imagem, object value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
