@@ -87,7 +87,7 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
         private bool JaRegistrou()
         {
             var jaRegistrou = Participante.RegistroFrequencias?.Any(a => a.Desafio.Id == Desafio.Id &&
-                a.DataFrequencia.Data == DataFrequencia.Data);
+                a.DataFrequencia.Data.Date == DataFrequencia.Data.Date);
 
             return jaRegistrou.Value;
         }
@@ -105,11 +105,6 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
             var quantidadeDayOffPermitida = Desafio.DIAS_NA_SEMANA - Desafio.Regra.QuantidadeDiasObrigatorio;
 
             return (quantidadeDayOffNaSemana + 1) <= quantidadeDayOffPermitida;
-        }
-
-        public void Comparecimento(Imagem imagem, object value)
-        {
-            throw new NotImplementedException();
         }
     }
 }

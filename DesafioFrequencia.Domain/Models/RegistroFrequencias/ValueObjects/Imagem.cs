@@ -8,7 +8,7 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects
 
         public Imagem(string endereco)
         {
-            DomainExceptionValidation.When(endereco.Length > 100, "O nome da imagem ultrapassou os caracteres suportados.");
+            DomainExceptionValidation.When(endereco?.Length > 100, "O nome da imagem ultrapassou os caracteres suportados.");
             Endereco = endereco;
         }
     }
