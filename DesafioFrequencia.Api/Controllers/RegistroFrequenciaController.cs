@@ -5,7 +5,6 @@ using DesafioFrequencia.Application.RegistroFrequencias.FaltaJustificada;
 using DesafioFrequencia.Infra.Utils.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 
 namespace DesafioFrequencia.Api.Controllers
 {
@@ -13,7 +12,6 @@ namespace DesafioFrequencia.Api.Controllers
     [ApiController]
     public class RegistroFrequenciaController : Controller
     {
-
         private readonly IMediator _mediator;
         private readonly IImageUploadService _imageUploadService;
         private readonly IConfiguration _configuration;

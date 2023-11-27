@@ -25,6 +25,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
                     participante);
@@ -52,6 +54,8 @@ namespace DesafioFrequencia.Domain.Tests
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
+
+                desafio.IncluirParticipante(participante);
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
@@ -89,6 +93,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2099, 12, 31)),
                     desafio,
                     participante);
@@ -117,6 +123,8 @@ namespace DesafioFrequencia.Domain.Tests
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
+
+                desafio.IncluirParticipante(participante);
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
@@ -147,6 +155,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
                     participante);
@@ -175,6 +185,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
                     participante);
@@ -201,6 +213,8 @@ namespace DesafioFrequencia.Domain.Tests
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
+
+                desafio.IncluirParticipante(participante);
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
@@ -236,6 +250,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2099, 12, 31)),
                     desafio,
                     participante);
@@ -264,6 +280,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
                     participante);
@@ -290,6 +308,8 @@ namespace DesafioFrequencia.Domain.Tests
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
+
+                desafio.IncluirParticipante(participante);
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
@@ -327,6 +347,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2099, 12, 31)),
                     desafio,
                     participante);
@@ -354,6 +376,8 @@ namespace DesafioFrequencia.Domain.Tests
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
+
+                desafio.IncluirParticipante(participante);
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
@@ -383,6 +407,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
                     participante);
@@ -409,6 +435,8 @@ namespace DesafioFrequencia.Domain.Tests
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
+
+                desafio.IncluirParticipante(participante);
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 19)),
                     desafio,
@@ -449,6 +477,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
                     desafio,
                     participante);
@@ -482,6 +512,8 @@ namespace DesafioFrequencia.Domain.Tests
                     Models.Participantes.ValueObjects.Sexo.Masculino,
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
+
+                desafio.IncluirParticipante(participante);
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 23)),
                     desafio,
@@ -523,6 +555,8 @@ namespace DesafioFrequencia.Domain.Tests
                     new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
                 );
 
+                desafio.IncluirParticipante(participante);
+
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2099, 12, 31)),
                     desafio,
                     participante);
@@ -534,6 +568,119 @@ namespace DesafioFrequencia.Domain.Tests
                 .Should()
                 .Throw<DomainExceptionValidation>()
                 .WithMessage("A frequência não pode ser adicionada para o futuro.");
+        }
+
+        [Fact]
+        public void IncluirComparecimento_ParticipanteNaoEstaNoDesafio_ErroInclusaoNovoRegistroFrequencia()
+        {
+            Action action = () =>
+            {
+                var desafio = Desafio.Criar("Marombers 2023.4",
+                    new Periodo(new DateTime(2023, 06, 01), new DateTime(2023, 06, 30)),
+                    new Regra(DayOfWeek.Monday, 5));
+
+                var participante = Participante.Registrar(
+                    new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
+                    Models.Participantes.ValueObjects.Sexo.Masculino,
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                );
+
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
+                    desafio,
+                    participante);
+
+                registroFrequencia.Comparecimento(
+                    new Imagem("picture.jpg"), Modalidade.Academia);
+            };
+
+            action
+                .Should()
+                .Throw<DomainExceptionValidation>()
+                .WithMessage("O participante não está presente no desafio.");
+        }
+
+        [Fact]
+        public void IncluirFalta_ParticipanteNaoEstaNoDesafio_ErroInclusaoNovoRegistroFrequencia()
+        {
+            Action action = () =>
+            {
+                var desafio = Desafio.Criar("Marombers 2023.4",
+                    new Periodo(new DateTime(2023, 06, 01), new DateTime(2023, 06, 30)),
+                    new Regra(DayOfWeek.Monday, 5));
+
+                var participante = Participante.Registrar(
+                    new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
+                    Models.Participantes.ValueObjects.Sexo.Masculino,
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                );
+
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
+                    desafio,
+                    participante);
+
+                registroFrequencia.Falta();
+            };
+
+            action
+                .Should()
+                .Throw<DomainExceptionValidation>()
+                .WithMessage("O participante não está presente no desafio.");
+        }
+
+        [Fact]
+        public void IncluirFaltaJustificada_ParticipanteNaoEstaNoDesafio_ErroInclusaoNovoRegistroFrequencia()
+        {
+            Action action = () =>
+            {
+                var desafio = Desafio.Criar("Marombers 2023.4",
+                    new Periodo(new DateTime(2023, 06, 01), new DateTime(2023, 06, 30)),
+                    new Regra(DayOfWeek.Monday, 5));
+
+                var participante = Participante.Registrar(
+                    new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
+                    Models.Participantes.ValueObjects.Sexo.Masculino,
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                );
+
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
+                    desafio,
+                    participante);
+
+                registroFrequencia.FaltaJustificada(new Imagem("picture.jpg"));
+            };
+
+            action
+                .Should()
+                .Throw<DomainExceptionValidation>()
+                .WithMessage("O participante não está presente no desafio.");
+        }
+
+        [Fact]
+        public void IncluirDayOff_ParticipanteNaoEstaNoDesafio_ErroInclusaoNovoRegistroFrequencia()
+        {
+            Action action = () =>
+            {
+                var desafio = Desafio.Criar("Marombers 2023.4",
+                    new Periodo(new DateTime(2023, 06, 01), new DateTime(2023, 06, 30)),
+                    new Regra(DayOfWeek.Monday, 5));
+
+                var participante = Participante.Registrar(
+                    new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
+                    Models.Participantes.ValueObjects.Sexo.Masculino,
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                );
+
+                var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
+                    desafio,
+                    participante);
+
+                registroFrequencia.DayOff();
+            };
+
+            action
+                .Should()
+                .Throw<DomainExceptionValidation>()
+                .WithMessage("O participante não está presente no desafio.");
         }
     }
 }

@@ -31,6 +31,9 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
 
         public void Comparecimento(Imagem imagem, Modalidade modalidade)
         {
+            DomainExceptionValidation.When(!ParticipanteEstaNoDesafio(), 
+                "O participante não está presente no desafio.");
+
             RegistrarFrequencia(imagem, EstadoFrequencia.Comparecimento, modalidade);
 
             RaiseDomainEvent(new ComparecimentoDomainEvent(Desafio.Id, Participante.Id));
@@ -38,6 +41,9 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
 
         public void Falta()
         {
+            DomainExceptionValidation.When(!ParticipanteEstaNoDesafio(), 
+                "O participante não está presente no desafio.");
+
             RegistrarFrequencia(EstadoFrequencia.Falta);
 
             RaiseDomainEvent(new FaltaDomainEvent(Desafio.Id, Participante.Id));
@@ -45,6 +51,9 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
 
         public void DayOff()
         {
+            DomainExceptionValidation.When(!ParticipanteEstaNoDesafio(),
+                "O participante não está presente no desafio.");
+
             DomainExceptionValidation.When(!EhPermitidoODayOff(),
                 "Já foram incluidos a quantidade máxima de dayoffs na semana.");
 
@@ -55,6 +64,9 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
 
         public void FaltaJustificada(Imagem imagem)
         {
+            DomainExceptionValidation.When(!ParticipanteEstaNoDesafio(),
+                "O participante não está presente no desafio.");
+
             RegistrarFrequencia(imagem, EstadoFrequencia.FaltaJustificada);
 
             RaiseDomainEvent(new FaltaJustificadaDomainEvent(Desafio.Id, Participante.Id));
@@ -105,6 +117,11 @@ namespace DesafioFrequencia.Domain.Models.RegistroFrequencias
             var quantidadeDayOffPermitida = Desafio.DIAS_NA_SEMANA - Desafio.Regra.QuantidadeDiasObrigatorio;
 
             return (quantidadeDayOffNaSemana + 1) <= quantidadeDayOffPermitida;
+        }
+
+        private bool ParticipanteEstaNoDesafio()
+        {
+            return Desafio.Participantes.Any(a => a.Id == Participante.Id);
         }
     }
 }
