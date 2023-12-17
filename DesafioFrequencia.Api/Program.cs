@@ -1,3 +1,4 @@
+using DesafioFrequencia.Domain.Interfaces;
 using DesafioFrequencia.Infra.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,18 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+using (var scope = app.Services.CreateScope())
+{
+    var seedUserRoleInitial = scope.ServiceProvider.GetService<ISeedUserRoleInitial>();
+
+    if (seedUserRoleInitial != null)
+    {
+        seedUserRoleInitial.SeedRoles();
+        seedUserRoleInitial.SeedUsers();
+    }
+}
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
