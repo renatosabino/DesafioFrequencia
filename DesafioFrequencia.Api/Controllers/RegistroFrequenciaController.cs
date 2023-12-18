@@ -4,12 +4,14 @@ using DesafioFrequencia.Application.RegistroFrequencias.Falta;
 using DesafioFrequencia.Application.RegistroFrequencias.FaltaJustificada;
 using DesafioFrequencia.Infra.Utils.Interfaces;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioFrequencia.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RegistroFrequenciaController : Controller
     {
         private readonly IMediator _mediator;
