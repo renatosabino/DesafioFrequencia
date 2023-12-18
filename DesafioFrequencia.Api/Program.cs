@@ -1,14 +1,15 @@
+using DesafioFrequencia.Domain.Interfaces;
 using DesafioFrequencia.Infra.IoC;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
 builder.Services.AddInfrastructure(builder.Configuration);
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructureJWT(builder.Configuration);
+builder.Services.AddInfrastructureSwagger();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -16,13 +17,29 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DesafioFrequencia.API v1"));
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var seedUserRoleInitial = scope.ServiceProvider.GetService<ISeedUserRoleInitial>();
+
+    if (seedUserRoleInitial != null)
+    {
+        seedUserRoleInitial.SeedRoles();
+        seedUserRoleInitial.SeedUsers();
+    }
 }
 
 app.UseHttpsRedirection();
-
+app.UseStatusCodePages();
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

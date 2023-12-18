@@ -4,12 +4,14 @@ using DesafioFrequencia.Application.Desafios.AlterarRegra;
 using DesafioFrequencia.Application.Desafios.Criar;
 using DesafioFrequencia.Application.Desafios.IncluirParticipante;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioFrequencia.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class DesafioController : Controller
     {
         private readonly IMediator _mediator;
