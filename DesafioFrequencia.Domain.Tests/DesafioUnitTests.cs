@@ -182,7 +182,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new NomeCompleto("Renato", "Sabino"),
                     Sexo.Masculino,
-                    new DataDeNascimento(new DateTime(1996, 12, 03))
+                    new DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -205,7 +206,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new NomeCompleto("Renato", "Sabino"),
                     Sexo.Masculino,
-                    new DataDeNascimento(new DateTime(1996, 12, 03))
+                    new DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);

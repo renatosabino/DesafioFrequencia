@@ -13,7 +13,8 @@ namespace DesafioFrequencia.Domain.Tests
             Action action = () => Participante.Registrar(
                 new NomeCompleto("Renato", "Sabino"),
                 Sexo.Masculino,
-                new DataDeNascimento(new DateTime(1996, 12, 03))
+                new DataDeNascimento(new DateTime(1996, 12, 03)),
+                new Email("resabino1996@gmail.com")
             );
 
             action.Should()
@@ -26,7 +27,8 @@ namespace DesafioFrequencia.Domain.Tests
             Action action = () => Participante.Registrar(
                 new NomeCompleto(new string('A', 51), "Sabino"),
                 Sexo.Masculino,
-                new DataDeNascimento(new DateTime(1996, 12, 03))
+                new DataDeNascimento(new DateTime(1996, 12, 03)),
+                new Email("resabino1996@gmail.com")
             );
 
             action.Should()
@@ -40,7 +42,8 @@ namespace DesafioFrequencia.Domain.Tests
             Action action = () => Participante.Registrar(
                 new NomeCompleto("Renato", new string('A', 101)),
                 Sexo.Masculino,
-                new DataDeNascimento(new DateTime(1996, 12, 03))
+                new DataDeNascimento(new DateTime(1996, 12, 03)),
+                new Email("resabino1996@gmail.com")
             );
 
             action.Should()
@@ -49,12 +52,28 @@ namespace DesafioFrequencia.Domain.Tests
         }
 
         [Fact]
+        public void RegistrarParticipante_EmailInvalido_RetornoObjetoInvalido()
+        {
+            Action action = () => Participante.Registrar(
+                new NomeCompleto("Renato", "Sabino"),
+                Sexo.Masculino,
+                new DataDeNascimento(new DateTime(1996, 12, 03)),
+                new Email("resabino1996")
+            );
+
+            action.Should()
+                .Throw<DomainExceptionValidation>()
+                .WithMessage("O email é inválido.");
+        }
+
+        [Fact]
         public void RegistrarParticipante_SexoInvalido_RetornoObjetoInvalido()
         {
             Action action = () => Participante.Registrar(
                 new NomeCompleto("Renato", "Sabino"),
                 Sexo.FromString("ABC"),
-                new DataDeNascimento(new DateTime(1996, 12, 03))
+                new DataDeNascimento(new DateTime(1996, 12, 03)),
+                new Email("resabino1996@gmail.com")
             );
 
             action.Should()
@@ -80,7 +99,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                         new NomeCompleto("Renato", "Sabno"),
                         Sexo.Masculino,
-                        new DataDeNascimento(new DateTime(1996, 12, 03))
+                        new DataDeNascimento(new DateTime(1996, 12, 03)),
+                        new Email("resabino1996@gmail.com")
                     );
 
                 participante.AlterarImagem(new Imagem(new string('a', 200)));
@@ -99,7 +119,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new NomeCompleto("Renato", "Sabno"),
                     Sexo.Masculino,
-                    new DataDeNascimento(new DateTime(1996, 12, 03))
+                    new DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Email("resabino1996@gmail.com")
                 );
 
                 participante.Editar(

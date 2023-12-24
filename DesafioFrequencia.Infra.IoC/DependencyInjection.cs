@@ -19,9 +19,12 @@ namespace DesafioFrequencia.Infra.IoC
         {
             services.AddDbContext<DesafioFrequenciaContext>();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<DesafioFrequenciaContext>()
-                .AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
+            {
+                opt.User.RequireUniqueEmail = true;
+            })
+            .AddEntityFrameworkStores<DesafioFrequenciaContext>()
+            .AddDefaultTokenProviders();
 
             services.AddScoped<IParticipanteRepository, ParticipanteRepository>();
             services.AddScoped<IDesafioRepository, DesafioRepository>();

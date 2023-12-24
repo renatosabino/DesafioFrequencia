@@ -19,7 +19,8 @@ namespace DesafioFrequencia.Application.Participantes.Registrar
             var participante = Participante.Registrar(
                 new NomeCompleto(request.Nome, request.Sobrenome),
                 Sexo.FromString(request.Sexo),
-                new DataDeNascimento(request.DataDeNascimento)
+                new DataDeNascimento(request.DataDeNascimento),
+                new Email(_unitOfWork.EmailLogado)
             );
 
             await _unitOfWork.ParticipanteRepository.CreateAsync(participante, cancellationToken);

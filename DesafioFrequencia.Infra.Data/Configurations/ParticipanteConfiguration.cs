@@ -33,9 +33,9 @@ namespace DesafioFrequencia.Infra.Data.Configurations
                 .HasColumnName("DataDeNascimento")
                 .IsRequired();
 
-            builder.OwnsOne(v => v.DataDeNascimento)
-                .Property(x => x.Valor)
-                .HasColumnName("DataDeNascimento")
+            builder.OwnsOne(v => v.Email)
+                .Property(x => x.Endereco)
+                .HasColumnName("Email")
                 .IsRequired();
 
             builder.OwnsOne(v => v.Imagem)

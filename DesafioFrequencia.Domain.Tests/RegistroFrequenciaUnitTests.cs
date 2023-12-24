@@ -22,7 +22,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -52,7 +53,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -90,7 +92,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -121,7 +124,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -152,7 +156,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -182,7 +187,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -211,7 +217,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -247,7 +254,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -277,7 +285,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -306,7 +315,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -344,7 +354,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -374,7 +385,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -404,7 +416,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -433,7 +446,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -474,7 +488,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -510,7 +525,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -552,7 +568,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 desafio.IncluirParticipante(participante);
@@ -582,7 +599,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
@@ -611,7 +629,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
@@ -639,7 +658,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
@@ -667,7 +687,8 @@ namespace DesafioFrequencia.Domain.Tests
                 var participante = Participante.Registrar(
                     new Models.Participantes.ValueObjects.NomeCompleto("Renato", "Sabino"),
                     Models.Participantes.ValueObjects.Sexo.Masculino,
-                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03))
+                    new Models.Participantes.ValueObjects.DataDeNascimento(new DateTime(1996, 12, 03)),
+                    new Models.Participantes.ValueObjects.Email("resabino1996@gmail.com")
                 );
 
                 var registroFrequencia = new RegistroFrequencia(new DataFrequencia(new DateTime(2023, 10, 26)),
