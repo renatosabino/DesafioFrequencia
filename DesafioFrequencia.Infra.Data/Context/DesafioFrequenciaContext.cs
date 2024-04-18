@@ -5,18 +5,18 @@ using DesafioFrequencia.Infra.Data.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace DesafioFrequencia.Infra.Data.Context
 {
     public class DesafioFrequenciaContext : IdentityDbContext<ApplicationUser>
     {
-        public string DbPath { get; }
+        private readonly IConfiguration _configuration;
 
-        public DesafioFrequenciaContext(DbContextOptions<DesafioFrequenciaContext> options) : base(options)
+        public DesafioFrequenciaContext(DbContextOptions<DesafioFrequenciaContext> options,
+            IConfiguration configuration) : base(options)
         {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            DbPath = Path.Join(path, "desafio_frequencia.db");
+            this._configuration = configuration;
         }
 
         public DbSet<Participante> Participantes { get; set; }
@@ -31,8 +31,8 @@ namespace DesafioFrequencia.Infra.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite($"Data Source={DbPath}",
-                b => b.MigrationsAssembly(typeof(DesafioFrequenciaContext).Assembly.FullName));
+            var connectionString = _configuration.GetConnectionString("DesafioFrequencia");
+            optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         }
     }
 }

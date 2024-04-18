@@ -11,25 +11,27 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesafioFrequencia.Infra.Data.Migrations
 {
     [DbContext(typeof(DesafioFrequenciaContext))]
-    [Migration("20231217171708_AddIdentityTables")]
-    partial class AddIdentityTables
+    [Migration("20240418181820_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "7.0.13")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("DesafioFrequencia.Domain.Models.Desafios.Desafio", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
 
@@ -40,7 +42,7 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -51,13 +53,13 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("DesafioId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("ParticipanteId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -71,54 +73,54 @@ namespace DesafioFrequencia.Infra.Data.Migrations
             modelBuilder.Entity("DesafioFrequencia.Infra.Data.Identity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
@@ -135,10 +137,10 @@ namespace DesafioFrequencia.Infra.Data.Migrations
             modelBuilder.Entity("DesafioParticipante", b =>
                 {
                     b.Property<int>("DesafiosId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("ParticipantesId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("DesafiosId", "ParticipantesId");
 
@@ -150,19 +152,19 @@ namespace DesafioFrequencia.Infra.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
@@ -177,17 +179,17 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -200,17 +202,17 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -222,17 +224,17 @@ namespace DesafioFrequencia.Infra.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -244,10 +246,10 @@ namespace DesafioFrequencia.Infra.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -259,16 +261,16 @@ namespace DesafioFrequencia.Infra.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -280,14 +282,14 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.Desafios.ValueObjects.Periodo", "Periodo", b1 =>
                         {
                             b1.Property<int>("DesafioId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<DateTime>("Fim")
-                                .HasColumnType("TEXT")
+                                .HasColumnType("datetime(6)")
                                 .HasColumnName("Fim");
 
                             b1.Property<DateTime>("Inicio")
-                                .HasColumnType("TEXT")
+                                .HasColumnType("datetime(6)")
                                 .HasColumnName("Inicio");
 
                             b1.HasKey("DesafioId");
@@ -301,14 +303,14 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.Desafios.ValueObjects.Regra", "Regra", b1 =>
                         {
                             b1.Property<int>("DesafioId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<int>("InicioDaSemana")
-                                .HasColumnType("INTEGER")
+                                .HasColumnType("int")
                                 .HasColumnName("InicioDaSemana");
 
                             b1.Property<int>("QuantidadeDiasObrigatorio")
-                                .HasColumnType("INTEGER")
+                                .HasColumnType("int")
                                 .HasColumnName("QuantidadeDiasObrigatorio");
 
                             b1.HasKey("DesafioId");
@@ -331,11 +333,29 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.Participantes.ValueObjects.DataDeNascimento", "DataDeNascimento", b1 =>
                         {
                             b1.Property<int>("ParticipanteId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<DateTime>("Valor")
-                                .HasColumnType("TEXT")
+                                .HasColumnType("datetime(6)")
                                 .HasColumnName("DataDeNascimento");
+
+                            b1.HasKey("ParticipanteId");
+
+                            b1.ToTable("Participantes");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ParticipanteId");
+                        });
+
+                    b.OwnsOne("DesafioFrequencia.Domain.Models.Participantes.ValueObjects.Email", "Email", b1 =>
+                        {
+                            b1.Property<int>("ParticipanteId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Endereco")
+                                .IsRequired()
+                                .HasColumnType("longtext")
+                                .HasColumnName("Email");
 
                             b1.HasKey("ParticipanteId");
 
@@ -348,11 +368,11 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.Participantes.ValueObjects.Imagem", "Imagem", b1 =>
                         {
                             b1.Property<int>("ParticipanteId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<string>("Endereco")
                                 .IsRequired()
-                                .HasColumnType("TEXT")
+                                .HasColumnType("longtext")
                                 .HasColumnName("Imagem");
 
                             b1.HasKey("ParticipanteId");
@@ -366,18 +386,18 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.Participantes.ValueObjects.NomeCompleto", "NomeCompleto", b1 =>
                         {
                             b1.Property<int>("ParticipanteId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<string>("Nome")
                                 .IsRequired()
                                 .HasMaxLength(50)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("varchar(50)")
                                 .HasColumnName("Nome");
 
                             b1.Property<string>("Sobrenome")
                                 .IsRequired()
                                 .HasMaxLength(100)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("varchar(100)")
                                 .HasColumnName("Sobrenome");
 
                             b1.HasKey("ParticipanteId");
@@ -391,12 +411,12 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.Participantes.ValueObjects.Sexo", "Sexo", b1 =>
                         {
                             b1.Property<int>("ParticipanteId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<string>("Valor")
                                 .IsRequired()
                                 .HasMaxLength(10)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("varchar(10)")
                                 .HasColumnName("Sexo");
 
                             b1.HasKey("ParticipanteId");
@@ -408,6 +428,9 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                         });
 
                     b.Navigation("DataDeNascimento")
+                        .IsRequired();
+
+                    b.Navigation("Email")
                         .IsRequired();
 
                     b.Navigation("Imagem");
@@ -436,10 +459,10 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects.DataFrequencia", "DataFrequencia", b1 =>
                         {
                             b1.Property<int>("RegistroFrequenciaId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<DateTime>("Data")
-                                .HasColumnType("TEXT")
+                                .HasColumnType("datetime(6)")
                                 .HasColumnName("Data");
 
                             b1.HasKey("RegistroFrequenciaId");
@@ -453,12 +476,12 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects.EstadoFrequencia", "EstadoFrequencia", b1 =>
                         {
                             b1.Property<int>("RegistroFrequenciaId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<string>("Tipo")
                                 .IsRequired()
                                 .HasMaxLength(20)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("varchar(20)")
                                 .HasColumnName("Estado");
 
                             b1.HasKey("RegistroFrequenciaId");
@@ -472,11 +495,11 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects.Imagem", "Imagem", b1 =>
                         {
                             b1.Property<int>("RegistroFrequenciaId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<string>("Endereco")
                                 .HasMaxLength(100)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("varchar(100)")
                                 .HasColumnName("Imagem");
 
                             b1.HasKey("RegistroFrequenciaId");
@@ -490,11 +513,11 @@ namespace DesafioFrequencia.Infra.Data.Migrations
                     b.OwnsOne("DesafioFrequencia.Domain.Models.RegistroFrequencias.ValueObjects.Modalidade", "Modalidade", b1 =>
                         {
                             b1.Property<int>("RegistroFrequenciaId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<string>("Tipo")
                                 .HasMaxLength(20)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("varchar(20)")
                                 .HasColumnName("Modalidade");
 
                             b1.HasKey("RegistroFrequenciaId");
