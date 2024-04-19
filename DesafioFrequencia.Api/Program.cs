@@ -1,6 +1,6 @@
 using DesafioFrequencia.Domain.Interfaces;
+using DesafioFrequencia.Infra.Data.Context;
 using DesafioFrequencia.Infra.IoC;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,21 +15,15 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DesafioFrequencia.API v1"));
-}
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DesafioFrequencia.API v1"));
+
 
 using (var scope = app.Services.CreateScope())
 {
-    var seedUserRoleInitial = scope.ServiceProvider.GetService<ISeedUserRoleInitial>();
+    CreateDatabase(scope);
 
-    if (seedUserRoleInitial != null)
-    {
-        seedUserRoleInitial.SeedRoles();
-        seedUserRoleInitial.SeedUsers();
-    }
+    SeedIdentity(scope);
 }
 
 app.UseHttpsRedirection();
@@ -44,3 +38,20 @@ app.UseEndpoints(endpoints =>
 });
 
 app.Run();
+
+static void SeedIdentity(IServiceScope scope)
+{
+    var seedUserRoleInitial = scope.ServiceProvider.GetService<ISeedUserRoleInitial>();
+
+    if (seedUserRoleInitial != null)
+    {
+        seedUserRoleInitial.SeedRoles();
+        seedUserRoleInitial.SeedUsers();
+    }
+}
+
+static void CreateDatabase(IServiceScope scope)
+{
+    var context = scope.ServiceProvider.GetRequiredService<DesafioFrequenciaContext>();
+    context.Database.EnsureCreated();
+}
